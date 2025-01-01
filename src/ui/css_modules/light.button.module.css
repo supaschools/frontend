@@ -1,0 +1,26 @@
+/* Button.module.css */
+.duolingoButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1em;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 0.8em;
+  box-shadow: 0 3px #b9bcbe;
+  border: 0.05em solid #ced4da;
+
+  transition: all 0.0009s;
+  user-select: none;
+  margin-bottom: 0.4em;
+}
+
+.duolingoButton:focus,
+.duolingoButton:hover {
+  outline: 2px #1971c2;
+  background-color: #f7f7f7;
+}
+
+.duolingoButton:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}

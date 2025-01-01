@@ -1,0 +1,52 @@
+.duolingoButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1em;
+  color: #ffffff;
+  background-color: #4285f4;
+  border-radius: 0.8em;
+  box-shadow: 0 4px #1e51a2;
+  transition: all 0.0009s;
+  user-select: none;
+  margin-bottom: 0.4em;
+}
+
+.duolingoButton:focus,
+.duolingoButton:hover {
+  background-color: #3976d7;
+  outline: 2px #1971c2;
+}
+
+.duolingoButton:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.success {
+  background-color: #28a745;
+  box-shadow: 0 4px #087622;
+}
+
+.success:focus,
+.success:hover {
+  background-color: #218838;
+}
+
+.danger {
+  background-color: #dc3545;
+  box-shadow: 0 4px#980e1b;
+}
+
+.danger:focus,
+.danger:hover {
+  background-color: #c82333;
+}
+
+.duolingoButton:active,
+.primary:active,
+.secondary:active,
+.success:active,
+.danger:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
