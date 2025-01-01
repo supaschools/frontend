@@ -154,17 +154,18 @@ export default function HeroSection() {
             In Your School With AI
           </h1>
 
-          <p
-            className="text-base sm:text-lg lg:text-xl text-gray-400 font-sans mx-auto max-w-full sm:max-w-2xl"
-            style={{ lineHeight: "1.6" }}
-          >
-            <span className="sm:whitespace-nowrap">
-              With 30+ students per class, teachers struggle to provide
-              individual attention.
+          <p className="mt-8 text-pretty text-base sm:text-lg lg:text-xl text-gray-400 max-w-[90%] sm:max-w-2xl mx-auto">
+            <span className="block">
+              With 20+ students in a class, it's difficult for teachers to
+              provide
             </span>
-            <br className="hidden sm:block" />
-            &nbsp;Our AI solution offers personalized learning for students,
-            based on their strenghts and weaknesses
+            <span className="block">
+              individual attention. Our AI assistant makes it very easy for
+              teachers to
+            </span>
+            <span className="block">
+              personalize learning for students, based on their learning gaps.
+            </span>
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 justify-center mt-4 sm:mt-6 lg:mt-8">
