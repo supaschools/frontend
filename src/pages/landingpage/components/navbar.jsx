@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import ChangeButton from "./changebutton";
 import { buttonVariants } from "../../../ui/button";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 
-const Navbar = () => {
+const Navbar = ({ mode = "normal" }) => {
   const [scrolled, setScrolled] = useState(false);
   const [showGetStarted, setShowGetStarted] = useState(false);
 
@@ -35,7 +36,8 @@ const Navbar = () => {
           backdropFilter: scrolled ? undefined : "none",
         }}
       >
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="SupaSchools Logo" className="h-8 w-auto" />
           <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl text-center">
             SupaSchools
           </h1>
@@ -51,7 +53,11 @@ const Navbar = () => {
             }`}
           >
             <div className="text-base font-semibold">
-              {showGetStarted ? "SCHEDULE DEMO" : "TRY OUR AI EVALUATOR"}
+              {mode === "demo"
+                ? "GO BACK"
+                : showGetStarted
+                ? "SCHEDULE DEMO"
+                : "TRY OUR AI EVALUATOR"}
             </div>
           </Link>
         </div>

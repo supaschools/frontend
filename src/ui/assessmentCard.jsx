@@ -3,11 +3,9 @@ import styles from "./css_modules/quizcard.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
 
-function AssessmentCard({ assessmentId, title, isStarted, isCompleted }) {
+function AssessmentCard({ assessmentId, title, isCompleted }) {
   const getButtonText = () => {
-    if (!isStarted) return "Start";
-    if (!isCompleted) return "Continue";
-    return "Review";
+    return isCompleted ? "Review" : "Start";
   };
 
   return (

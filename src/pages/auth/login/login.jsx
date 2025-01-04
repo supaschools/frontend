@@ -55,7 +55,7 @@ const LoginPage = () => {
         { email, password }
       );
       localStorage.setItem("token", response.data.token);
-      navigate(`${email}/home`);
+      navigate("/home");
     } catch (error) {
       console.error("Login error:", error);
       setError("Invalid email or password. Please try again.");

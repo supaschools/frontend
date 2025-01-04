@@ -1,97 +1,84 @@
-import React from "react";
-import { ArrowRight, Upload, Bot, LineChart, BookOpen } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import StepTabs from "./howitworks/StepTabs";
+import SubjectTabs from "./howitworks/SubjectTabs";
+import DemoContent from "./howitworks/DemoContent";
+import SectionTitle from "./howitworks/SectionTitle";
 
 export default function HowItWorks() {
-  const steps = [
-    {
-      number: "01",
-      title: "Input Student Work",
-      description:
-        "Upload assignments, quizzes, and exam responses to the platform",
-      icon: <Upload className="w-8 h-8 text-[#407BFF]" />,
-    },
-    {
-      number: "02",
-      title: "Evaluation By AI",
-      description: "AI evaluates and grade responses with very high accuracy",
-      icon: <Bot className="w-8 h-8 text-[#407BFF]" />,
-    },
-    {
-      number: "03",
-      title: "Personalized Insights",
-      description:
-        "Provides feedback to both teacher and student, pin-pointing learning gaps",
-      icon: <LineChart className="w-8 h-8 text-[#407BFF]" />,
-    },
-    {
-      number: "04",
-      title: "Adaptive Learning",
-      description:
-        "Based on strength and weaknesses, AI generates personalized learning materials and exercises",
-      icon: <BookOpen className="w-8 h-8 text-[#407BFF]" />,
-    },
-  ];
+  const [activeTab, setActiveTab] = useState("01");
+  const [activeSubject, setActiveSubject] = useState("maths");
+  const [uploadedImages, setUploadedImages] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-8");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    const stepElements = document.querySelectorAll("[data-step]");
+    stepElements.forEach((el, index) => {
+      observer.observe(el);
+      // Add staggered delay to each element
+      el.style.transitionDelay = `${index * 200}ms`;
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleSubjectChange = (subject) => {
+    console.log("Changing subject to:", subject);
+    setActiveSubject(subject);
+  };
 
   return (
     <section className="relative bg-[#000207] py-32">
-      {/* Section title */}
-      <div className="text-center mb-20">
-        <div className="inline-block mb-8 px-4 py-1 rounded-full bg-[#407BFF]/10 text-[#407BFF]">
-          HOW IT WORKS
-        </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6">
-          Steps To Achieve Personalized Learning
-        </h2>
-        <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
-          Designed to be intuitive for both teachers and students, with no
-          learning curve required and integrates seamlessly into teacher's
-          day-to-day work.
-        </p>
-      </div>
+      <SectionTitle />
 
-      {/* Flow chart */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <div key={step.number} className="relative">
-              {/* Step card with enhanced hover effects */}
-              <div
-                className="bg-[#0A0D1F] p-8 rounded-xl border border-[#407BFF]/20 h-full 
-                            transition-all duration-300 ease-in-out
-                            hover:border-[#407BFF]/60 hover:shadow-lg hover:shadow-[#407BFF]/20
-                            hover:translate-y-[-4px] hover:bg-[#0C0F24]"
-              >
-                <div
-                  className="text-[#407BFF] text-5xl mb-6 opacity-50 font-bold 
-                              group-hover:opacity-70 transition-opacity"
-                >
-                  {step.number}
-                </div>
-                <div
-                  className="mb-4 p-2 rounded-lg bg-[#407BFF]/10 w-fit 
-                              transition-colors duration-300 hover:bg-[#407BFF]/20"
-                >
-                  {step.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-gray-400">{step.description}</p>
-              </div>
-
-              {/* Connector arrow */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                  <ArrowRight className="text-[#407BFF] w-8 h-8" />
-                </div>
-              )}
+      <div className="max-w-full mx-auto px-6 lg:px-20">
+        <div className="flex flex-col md:flex-row gap-16">
+          <div className="md:sticky md:top-0 md:h-fit pl-0 md:w-64">
+            <div className="sticky top-[88px]">
+              <StepTabs activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
-          ))}
+          </div>
+
+          <div className="flex-1 pointer-events-auto relative z-10">
+            <div className="sticky top-[88px] z-20 pb-4">
+              <div className="flex justify-end">
+                <div className="max-w-[800px] w-full">
+                  <SubjectTabs
+                    activeSubject={activeSubject}
+                    handleSubjectChange={handleSubjectChange}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative flex justify-end mt-6">
+              <div className="animate-fadeIn max-w-[800px] w-full">
+                <DemoContent
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  activeSubject={activeSubject}
+                  uploadedImages={uploadedImages}
+                  setUploadedImages={setUploadedImages}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Background glow effect */}
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-[#407BFF] opacity-[0.07] blur-[120px] transform -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-[#407BFF] opacity-[0.07] blur-[120px] transform -translate-x-1/2 -translate-y-1/2 z-0" />
     </section>
   );
 }

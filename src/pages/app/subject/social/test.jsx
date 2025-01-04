@@ -2,7 +2,62 @@ import React, { useState } from "react";
 import MCQ from "../../../app/components/mcq";
 import Subjective from "../../../app/components/subjective";
 import { Button } from "../../../../ui/button";
-import TestNavbar from "../../components/testnavbar";
+import Navbar from "../../components/navbar";
+const questions = [
+  {
+    id: 1,
+    type: "mcq",
+    question: "Which event marked the beginning of the French Revolution?",
+    options: [
+      "The Storming of the Bastille",
+      "The Tennis Court Oath",
+      "The March on Versailles",
+      "The Declaration of the Rights of Man",
+    ],
+    correctAnswer: "The Storming of the Bastille",
+  },
+  {
+    id: 2,
+    type: "mcq",
+    question: "Which of these is a greenhouse gas?",
+    options: ["Carbon Dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+    correctAnswer: "Carbon Dioxide",
+  },
+  {
+    id: 3,
+    type: "very short",
+    question: "What year did World War II end?",
+    correctAnswer: "1945",
+  },
+  {
+    id: 4,
+    type: "short",
+    question: "Describe the importance of the Magna Carta in medieval England.",
+    correctAnswer:
+      "The Magna Carta limited the power of the king and established certain legal rights for the people.",
+  },
+  {
+    id: 5,
+    type: "long",
+    question:
+      "Explain the causes and consequences of the Industrial Revolution in Europe.",
+  },
+  {
+    id: 6,
+    type: "case based",
+    question:
+      "Case: In 1914, the assassination of Archduke Franz Ferdinand set off World War I. Based on this event, explain the chain of reactions that led to the war.",
+    correctAnswer:
+      "The assassination triggered a series of alliances being activated, leading to a full-scale war between major powers.",
+  },
+  {
+    id: 7,
+    type: "map based",
+    question: "On a map of Europe, mark the countries involved in World War I.",
+    correctAnswer:
+      "Countries to be marked include Germany, France, the UK, Russia, and Austria-Hungary, among others.",
+  },
+];
 
 const SocialTest = () => {
   const questions = [
@@ -71,7 +126,7 @@ const SocialTest = () => {
 
   return (
     <>
-      <TestNavbar />
+      <Navbar mode="test" />
       <div className="p-4 max-w-3xl mx-auto mt-20">
         <h1 className="text-2xl text-center font-bold mb-4">
           Social Studies Test

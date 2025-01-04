@@ -8,7 +8,7 @@ import HowItWorks from "./components/howitworks";
 export default function landingpage() {
   return (
     <div className="min-h-screen bg-[#000207] overflow-x-hidden">
-      <Navbar />
+      <Navbar mode="normal" />
       <HeroSection />
       <HowItWorks />
       <Features />
