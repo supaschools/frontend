@@ -40,7 +40,7 @@ const FAQ = () => {
             Got Questions?
           </h2>
           <p className="text-lg sm:text-xl text-gray-400">
-            Faster purchasing might seem like magic; let's get to brass tacks.
+            Here are some common questions about our AI assessment capabilities.
           </p>
         </div>
 
