@@ -2,6 +2,17 @@ import React from "react";
 import { Upload } from "lucide-react";
 import { subjects } from "../SubjectTabs";
 import img1 from "../../../../../assets/maths_demo_sol.jpeg";
+import mathsDemoImg from "../../../../../assets/maths_demo_sol.jpeg";
+import scienceDemoImg from "../../../../../assets/science_demo_sol.jpeg";
+import socialDemoImg from "../../../../../assets/social_demo_sol.jpeg";
+import englishDemoImg from "../../../../../assets/social_demo_sol.jpeg";
+
+const demoImages = {
+  maths: mathsDemoImg,
+  science: scienceDemoImg,
+  social: socialDemoImg,
+  english: englishDemoImg,
+};
 
 export default function UploadWork({
   activeSubject,
@@ -11,6 +22,15 @@ export default function UploadWork({
   const [dragActive, setDragActive] = React.useState(false);
   const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [previewUrls, setPreviewUrls] = React.useState([]);
+
+  React.useEffect(() => {
+    setSelectedFiles([]);
+    setPreviewUrls([]);
+    // Cleanup old preview URLs
+    previewUrls.forEach((url) => {
+      URL.revokeObjectURL(url);
+    });
+  }, [activeSubject]);
 
   const handleDrag = (e) => {
     e.preventDefault();
@@ -60,25 +80,25 @@ export default function UploadWork({
   };
 
   return (
-    <div className="space-y-6">
-      <p className="text-gray-400 text-lg mb-6">
+    <div className="space-y-2">
+      <p className="text-gray-400 text-base mb-4">
         Select any subject and drag and drop student response for evaluation
       </p>
 
       <div
         key={activeSubject}
-        className="bg-[#0A0D1F] p-6 rounded-xl border border-[#407BFF]/20"
+        className="bg-[#0A0D1F] p-4 rounded-xl border border-[#407BFF]/20"
       >
-        <div className="mb-4">
-          <h3 className="text-white font-medium mb-2">Question:</h3>
-          <p className="text-gray-400">
+        <div className="mb-3">
+          <h3 className="text-white font-medium mb-1">Question:</h3>
+          <p className="text-gray-400 text-sm">
             {subjects[activeSubject]?.question || "Select a subject"}
           </p>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-4">
           <div
-            className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors ${
+            className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-colors ${
               dragActive
                 ? "border-[#407BFF] bg-[#407BFF]/10"
                 : "border-gray-600 hover:border-[#407BFF]"
@@ -98,13 +118,13 @@ export default function UploadWork({
                     <img
                       src={url}
                       alt={`Dropped file ${index + 1}`}
-                      className="w-full h-96 object-contain rounded-lg hover:opacity-90 transition-opacity max-w-3xl"
+                      className="w-full h-64 object-contain rounded-lg hover:opacity-90 transition-opacity max-w-2xl"
                     />
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 text-sm mb-2">
                 Drag and drop your files here
               </p>
             )}
@@ -136,11 +156,11 @@ export default function UploadWork({
 
           {/* Only show example images if no files are uploaded */}
           {selectedFiles.length === 0 && (
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-4 mt-4">
               <img
-                src={img1}
-                alt="Upload illustration 1"
-                className="w-64 h-64 object-contain opacity-100 hover:opacity-90 transition-opacity cursor-pointer brightness-110"
+                src={demoImages[activeSubject]}
+                alt={`${subjects[activeSubject]?.title} demo solution`}
+                className="w-48 h-48 object-contain opacity-100 hover:opacity-90 transition-opacity cursor-pointer brightness-110"
               />
             </div>
           )}

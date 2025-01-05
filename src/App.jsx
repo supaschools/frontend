@@ -13,6 +13,7 @@ import SocialPage from "./pages/app/subject/social/social";
 import { UserProvider } from "./context/UserContext";
 import SocialTest from "./pages/app/subject/social/test";
 import SocialView from "./pages/app/subject/social/view";
+import TestPage from "./pages/test/test";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/home/social" element={<SocialPage />} />
           <Route path="/test" element={<SocialTest />} />
           <Route path="/view" element={<SocialView />} />
+          <Route path="/testi" element={<TestPage />} />
         </Routes>
       </UserProvider>
     </Router>

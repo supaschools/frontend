@@ -10,19 +10,23 @@ export default function DemoContent({
   activeSubject,
   uploadedImages,
   setUploadedImages,
+  hasScanned,
+  setHasScanned,
 }) {
   console.log("DemoContent Render:", {
     activeTab,
-    setActiveTab: typeof setActiveTab,
-    activeSubject,
+    uploadedImages,
+    hasScanned,
   });
 
   const handleTabChange = (newTab) => {
-    console.log("Attempting to change tab to:", newTab);
-    if (typeof setActiveTab === "function") {
-      setActiveTab(newTab);
-      console.log("Tab change function called");
+    if (newTab === "02" && uploadedImages.length === 0) {
+      console.log("Preventing navigation to step 2 - no images");
+      return;
     }
+
+    console.log("Changing tab to:", newTab);
+    setActiveTab(newTab);
   };
 
   switch (activeTab) {
@@ -40,6 +44,8 @@ export default function DemoContent({
           activeSubject={activeSubject}
           uploadedImages={uploadedImages}
           setActiveTab={handleTabChange}
+          hasScanned={hasScanned}
+          setHasScanned={setHasScanned}
         />
       );
     case "03":

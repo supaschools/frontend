@@ -4,7 +4,7 @@ import { LineChart, Bot, BookOpen, Upload } from "lucide-react";
 export const subjects = {
   maths: {
     title: "Mathematics",
-    question: "Solve the quadratic equation: 100x² - 20x + 1 = 0",
+    question: "Calculate the value of m in the equation 3·3²ᵐ - 11·3ᵐ = 4",
     icon: (activeSubject) => (
       <LineChart
         size={20}
@@ -16,12 +16,27 @@ export const subjects = {
   },
   science: {
     title: "Science",
-    question: "Explain the process of photosynthesis.",
+    question:
+      "Anirudh took two metal oxides, aluminium oxide and magnesium oxide, but he forget to label them. How will you guide anirudh to identify the metal oxides and label them?",
     icon: (activeSubject) => (
       <Bot
         size={20}
         className={`${
           activeSubject === "science" ? "text-white" : "text-[#407BFF]"
+        }`}
+      />
+    ),
+  },
+
+  social: {
+    title: "Social Science",
+    question:
+      "The most powerful weapon for the spanish conqueror was not conventional millitary. Justify this statement.",
+    icon: (activeSubject) => (
+      <Upload
+        size={20}
+        className={`${
+          activeSubject === "social" ? "text-white" : "text-[#407BFF]"
         }`}
       />
     ),
@@ -38,23 +53,11 @@ export const subjects = {
       />
     ),
   },
-  social: {
-    title: "Social Science",
-    question: "Explain the causes of Industrial Revolution.",
-    icon: (activeSubject) => (
-      <Upload
-        size={20}
-        className={`${
-          activeSubject === "social" ? "text-white" : "text-[#407BFF]"
-        }`}
-      />
-    ),
-  },
 };
 
 export default function SubjectTabs({ activeSubject, handleSubjectChange }) {
   return (
-    <div className="flex flex-wrap gap-3 mb-6 pointer-events-auto">
+    <div className="flex flex-wrap gap-3  pointer-events-auto">
       {Object.entries(subjects).map(([key, value]) => (
         <button
           key={key}

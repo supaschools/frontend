@@ -8,35 +8,26 @@ export default function HowItWorks() {
   const [activeTab, setActiveTab] = useState("01");
   const [activeSubject, setActiveSubject] = useState("maths");
   const [uploadedImages, setUploadedImages] = useState([]);
+  const [hasScanned, setHasScanned] = useState(false);
 
+  // Add debugging to track state changes
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("opacity-0", "translate-y-8");
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -10% 0px",
-      }
-    );
-
-    const stepElements = document.querySelectorAll("[data-step]");
-    stepElements.forEach((el, index) => {
-      observer.observe(el);
-      // Add staggered delay to each element
-      el.style.transitionDelay = `${index * 200}ms`;
+    console.log("State updated:", {
+      activeTab,
+      uploadedImages,
+      hasScanned,
     });
-
-    return () => observer.disconnect();
-  }, []);
+  }, [activeTab, uploadedImages, hasScanned]);
 
   const handleSubjectChange = (subject) => {
-    console.log("Changing subject to:", subject);
-    setActiveSubject(subject);
+    // Only reset state when changing subjects
+    if (subject !== activeSubject) {
+      console.log("Changing subject to:", subject);
+      setActiveSubject(subject);
+      setActiveTab("01");
+      setUploadedImages([]);
+      setHasScanned(false);
+    }
   };
 
   return (
@@ -44,11 +35,14 @@ export default function HowItWorks() {
       <SectionTitle />
 
       <div className="max-w-full mx-auto px-6 lg:px-20">
-        <div className="flex flex-col md:flex-row gap-16">
-          <div className="md:sticky md:top-0 md:h-fit pl-0 md:w-64">
-            <div className="sticky top-[88px]">
-              <StepTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-            </div>
+        <div className="flex flex-col md:flex-row gap-16 relative">
+          <div className="md:w-64 relative">
+            <StepTabs
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              uploadedImages={uploadedImages}
+              hasScanned={hasScanned}
+            />
           </div>
 
           <div className="flex-1 pointer-events-auto relative z-10">
@@ -71,6 +65,8 @@ export default function HowItWorks() {
                   activeSubject={activeSubject}
                   uploadedImages={uploadedImages}
                   setUploadedImages={setUploadedImages}
+                  hasScanned={hasScanned}
+                  setHasScanned={setHasScanned}
                 />
               </div>
             </div>
