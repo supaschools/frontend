@@ -41,25 +41,27 @@ export default function PersonalizedInsights({ activeSubject, setActiveTab }) {
           />
         </div>
         <div className="space-y-6">
-          <div className="mt-8 space-y-4">
-            <div>
-              <h4 className="text-white font-medium mb-2">Strengths</h4>
-              <ul className="list-disc list-inside text-gray-400">
-                {analysis.strengths.map((strength, index) => (
-                  <li key={index}>{strength}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="mt-8">
+            <div className="grid grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 className="text-white font-medium mb-2">Strengths</h4>
+                <ul className="list-disc list-inside text-gray-400">
+                  {analysis.strengths.map((strength, index) => (
+                    <li key={index}>{strength}</li>
+                  ))}
+                </ul>
+              </div>
 
-            <div>
-              <h4 className="text-white font-medium mb-2">
-                Areas for Improvement
-              </h4>
-              <ul className="list-disc list-inside text-gray-400">
-                {analysis.weaknesses.map((weakness, index) => (
-                  <li key={index}>{weakness}</li>
-                ))}
-              </ul>
+              <div>
+                <h4 className="text-white font-medium mb-2">
+                  Areas for Improvement
+                </h4>
+                <ul className="list-disc list-inside text-gray-400">
+                  {analysis.weaknesses.map((weakness, index) => (
+                    <li key={index}>{weakness}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div>
@@ -69,10 +71,10 @@ export default function PersonalizedInsights({ activeSubject, setActiveTab }) {
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center">
           <button
             onClick={() => setActiveTab("04")}
-            className="w-full bg-[#407BFF] hover:bg-[#407BFF]/90 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+            className="bg-[#407BFF] hover:bg-[#407BFF]/90 text-white font-medium py-3 px-6 rounded-lg transition-colors"
           >
             Personalize Learning Path
           </button>

@@ -98,7 +98,7 @@ export default function UploadWork({
 
         <div className="mt-4">
           <div
-            className={`border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-colors ${
+            className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors min-h-[200px] flex items-center justify-center ${
               dragActive
                 ? "border-[#407BFF] bg-[#407BFF]/10"
                 : "border-gray-600 hover:border-[#407BFF]"
@@ -118,15 +118,18 @@ export default function UploadWork({
                     <img
                       src={url}
                       alt={`Dropped file ${index + 1}`}
-                      className="w-full h-64 object-contain rounded-lg hover:opacity-90 transition-opacity max-w-2xl"
+                      className="w-full h-72 object-contain rounded-lg hover:opacity-90 transition-opacity max-w-2xl"
                     />
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-400 text-sm mb-2">
-                Drag and drop your files here
-              </p>
+              <div className="space-y-3">
+                <Upload className="w-10 h-10 mx-auto text-gray-400" />
+                <p className="text-gray-400 text-base">
+                  Drag and drop your files here
+                </p>
+              </div>
             )}
           </div>
           <p className="text-gray-400 text-sm mt-2">
@@ -139,7 +142,7 @@ export default function UploadWork({
 
           <div className="flex justify-center mt-4">
             <button
-              className={`px-8 py-3 rounded-lg font-medium transition-all ${
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 selectedFiles.length > 0
                   ? "bg-[#407BFF] text-white hover:bg-[#407BFF]/90"
                   : "bg-gray-600 text-gray-400 cursor-not-allowed"

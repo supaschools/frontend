@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle, XCircle } from "lucide-react";
 import { subjects } from "../SubjectTabs";
 
 export default function AIEvaluation({
@@ -115,11 +115,11 @@ export default function AIEvaluation({
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <EvaluationItem
-            icon={<CheckCircle className="text-green-500 mt-0.5" size={14} />}
+            icon={<XCircle className="text-red-500 mt-0.5" size={14} />}
             title="Answer Accuracy"
-            description="Analyzing solution steps and methodology"
+            description="Checking solution steps"
             isVisible={scanPosition > 30}
           />
           <EvaluationItem
@@ -137,7 +137,7 @@ export default function AIEvaluation({
         </div>
 
         {/* See Feedback Button */}
-        <div className="mt-3 flex justify-center">
+        <div className="mt-6 mb-2 flex justify-center">
           <button
             className={`px-4 py-1 rounded-lg font-medium transition-all duration-300 ${
               !isScanning
