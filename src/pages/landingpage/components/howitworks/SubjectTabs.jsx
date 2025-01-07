@@ -1,12 +1,12 @@
 import React from "react";
-import { LineChart, Bot, BookOpen, Upload } from "lucide-react";
+import { Calculator, Microscope, Globe2, BookOpen } from "lucide-react";
 
 export const subjects = {
   maths: {
     title: "Mathematics",
     question: "Calculate the value of m in the equation 3·3²ᵐ - 11·3ᵐ = 4",
     icon: (activeSubject) => (
-      <LineChart
+      <Calculator
         size={20}
         className={`${
           activeSubject === "maths" ? "text-white" : "text-[#407BFF]"
@@ -19,7 +19,7 @@ export const subjects = {
     question:
       "Anirudh took two metal oxides, aluminium oxide and magnesium oxide, but he forget to label them. How will you guide anirudh to identify the metal oxides and label them?",
     icon: (activeSubject) => (
-      <Bot
+      <Microscope
         size={20}
         className={`${
           activeSubject === "science" ? "text-white" : "text-[#407BFF]"
@@ -33,7 +33,7 @@ export const subjects = {
     question:
       "The most powerful weapon for the spanish conqueror was not conventional millitary. Justify this statement.",
     icon: (activeSubject) => (
-      <Upload
+      <Globe2
         size={20}
         className={`${
           activeSubject === "social" ? "text-white" : "text-[#407BFF]"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircle, AlertCircle, XCircle } from "lucide-react";
 import { subjects } from "../SubjectTabs";
+import img1 from "../../../../../assets/maths_demo_eval.jpg";
 
 export default function AIEvaluation({
   activeSubject,
@@ -8,6 +9,7 @@ export default function AIEvaluation({
   setActiveTab,
   hasScanned,
   setHasScanned,
+  onComplete,
 }) {
   const [scanPosition, setScanPosition] = useState(0);
   const [isScanning, setIsScanning] = useState(false);
@@ -20,6 +22,9 @@ export default function AIEvaluation({
     if (hasScanned) {
       setIsScanning(false);
       setScanPosition(100);
+      setTimeout(() => {
+        onComplete();
+      }, 1000);
       return;
     }
 
@@ -44,12 +49,7 @@ export default function AIEvaluation({
 
       requestAnimationFrame(animate);
     }
-  }, [isScanning, hasScanned, setHasScanned, uploadedImages]);
-
-  const handleFeedbackClick = () => {
-    console.log("See Feedback clicked, changing to tab 03");
-    setActiveTab("03");
-  };
+  }, [isScanning, hasScanned, setHasScanned, uploadedImages, onComplete]);
 
   return (
     <div className="space-y-2">
@@ -66,18 +66,26 @@ export default function AIEvaluation({
         <div className="relative mb-4 h-[400px] border border-[#407BFF]/20 rounded-lg overflow-hidden">
           {/* Display uploaded images */}
           <div className="absolute inset-0 flex items-center justify-center p-2">
-            {uploadedImages.map((url, index) => (
-              <div
-                key={index}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <img
-                  src={url}
-                  alt={`Uploaded image ${index + 1}`}
-                  className="w-auto h-[320px] object-contain"
-                />
-              </div>
-            ))}
+            {hasScanned ? (
+              <img
+                src={img1}
+                alt="Evaluation result"
+                className="w-auto h-[320px] object-contain"
+              />
+            ) : (
+              uploadedImages.map((url, index) => (
+                <div
+                  key={index}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img
+                    src={url}
+                    alt={`Uploaded image ${index + 1}`}
+                    className="w-auto h-[320px] object-contain"
+                  />
+                </div>
+              ))
+            )}
           </div>
 
           {/* Scanning Line */}
@@ -134,21 +142,6 @@ export default function AIEvaluation({
             description="Identifying knowledge gaps"
             isVisible={scanPosition > 90}
           />
-        </div>
-
-        {/* See Feedback Button */}
-        <div className="mt-6 mb-2 flex justify-center">
-          <button
-            className={`px-4 py-1 rounded-lg font-medium transition-all duration-300 ${
-              !isScanning
-                ? "bg-[#407BFF] text-white hover:bg-[#407BFF]/90 transform hover:scale-105"
-                : "bg-gray-600 text-gray-400 cursor-not-allowed"
-            }`}
-            disabled={isScanning}
-            onClick={handleFeedbackClick}
-          >
-            {isScanning ? "Analyzing..." : "See Feedback"}
-          </button>
         </div>
       </div>
     </div>

@@ -27,6 +27,7 @@ export default function HeroSection() {
         this.vy = (Math.random() - 0.5) * 0.3;
         this.radius = 2.5;
         this.opacity = 1;
+        this.targetOpacity = 1;
       }
 
       update() {
@@ -52,7 +53,7 @@ export default function HeroSection() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const textElement = document.querySelector(".text-gray-600");
+      const textElement = document.querySelector(".text-gray-400");
       const textBounds = textElement?.getBoundingClientRect();
 
       particles.forEach((particle) => {
@@ -60,15 +61,23 @@ export default function HeroSection() {
 
         const inTextArea =
           textBounds &&
-          particle.x >= textBounds.left - 20 &&
-          particle.x <= textBounds.right + 20 &&
-          particle.y >= textBounds.top - 20 &&
-          particle.y <= textBounds.bottom + 20;
+          particle.x >= textBounds.left - 40 &&
+          particle.x <= textBounds.right + 40 &&
+          particle.y >= textBounds.top - 40 &&
+          particle.y <= textBounds.bottom + 40;
 
-        if (inTextArea) {
-          particle.opacity = Math.max(0, particle.opacity - 0.1);
-        } else {
-          particle.opacity = Math.min(1, particle.opacity + 0.1);
+        particle.targetOpacity = inTextArea ? 0 : 1;
+
+        if (particle.opacity < particle.targetOpacity) {
+          particle.opacity = Math.min(
+            particle.opacity + 0.02,
+            particle.targetOpacity
+          );
+        } else if (particle.opacity > particle.targetOpacity) {
+          particle.opacity = Math.max(
+            particle.opacity - 0.02,
+            particle.targetOpacity
+          );
         }
 
         if (particle.opacity > 0) {
@@ -154,17 +163,17 @@ export default function HeroSection() {
             In Your School With AI
           </h1>
 
-          <p className="mt-8 text-pretty text-base sm:text-lg lg:text-xl text-gray-400 max-w-[90%] sm:max-w-2xl mx-auto">
-            <span className="block">
-              With 20+ students in a class, it's difficult for teachers to
-              provide
+          <p className="mt-8 text-pretty text-base sm:text-lg lg:text-xl text-gray-400 max-w-[90%] sm:max-w-3xl mx-auto">
+            <span className="block mb-1">
+              It's difficult for teachers to provide individual attention to
+              every student in a class.
+            </span>
+            <span className="block mb-1">
+              Our AI assistant makes it easy for teachers to personalize
+              learning
             </span>
             <span className="block">
-              individual attention. Our AI assistant makes it very easy for
-              teachers to
-            </span>
-            <span className="block">
-              personalize learning for students, based on their learning gaps.
+              of students based on their learning gaps.
             </span>
           </p>
 

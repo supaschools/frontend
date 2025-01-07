@@ -73,7 +73,7 @@ export default function PersonalizedInsights({ activeSubject, setActiveTab }) {
 
         <div className="mt-8 flex justify-center">
           <button
-            onClick={() => setActiveTab("04")}
+            onClick={() => setActiveTab("02")}
             className="bg-[#407BFF] hover:bg-[#407BFF]/90 text-white font-medium py-3 px-6 rounded-lg transition-colors"
           >
             Personalize Learning Path

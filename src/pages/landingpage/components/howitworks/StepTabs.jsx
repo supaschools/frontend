@@ -1,26 +1,21 @@
 import React from "react";
-import { Upload, Bot, LineChart, BookOpen } from "lucide-react";
+import { Upload, Bot, LineChart, BookOpen, MessageCircle } from "lucide-react";
 
 export const steps = [
   {
     number: "01",
-    title: "Input Student Work",
-    icon: <Upload className="w-6 h-6 text-[#407BFF]" />,
-  },
-  {
-    number: "02",
-    title: "Evaluation By AI",
+    title: "AI Evaluation",
     icon: <Bot className="w-6 h-6 text-[#407BFF]" />,
   },
   {
-    number: "03",
-    title: "Analysis And Feedback",
-    icon: <LineChart className="w-6 h-6 text-[#407BFF]" />,
-  },
-  {
-    number: "04",
+    number: "02",
     title: "Personalized Content",
     icon: <BookOpen className="w-6 h-6 text-[#407BFF]" />,
+  },
+  {
+    number: "03",
+    title: "Virtual Teacher",
+    icon: <MessageCircle className="w-6 h-6 text-[#407BFF]" />,
   },
 ];
 
@@ -63,6 +58,7 @@ export default function StepTabs({
     if (step === 2) return uploadedImages?.length > 0;
     if (step === 3) return hasScanned;
     if (step === 4) return hasScanned;
+    if (step === 5) return hasScanned;
 
     return step <= current;
   };

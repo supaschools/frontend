@@ -1,8 +1,7 @@
 import React from "react";
-import UploadWork from "./demo/UploadWork";
-import AIEvaluation from "./demo/AIEvaluation";
-import PersonalizedInsights from "./demo/PersonalizedInsights";
+import CombinedEvaluation from "./demo/CombinedEvaluation";
 import AdaptiveLearning from "./demo/AdaptiveLearning";
+import VirtualAssistant from "./demo/VirtualAssistant";
 
 export default function DemoContent({
   activeTab,
@@ -13,50 +12,27 @@ export default function DemoContent({
   hasScanned,
   setHasScanned,
 }) {
-  console.log("DemoContent Render:", {
-    activeTab,
-    uploadedImages,
-    hasScanned,
-  });
-
-  const handleTabChange = (newTab) => {
-    if (newTab === "02" && uploadedImages.length === 0) {
-      console.log("Preventing navigation to step 2 - no images");
-      return;
-    }
-
-    console.log("Changing tab to:", newTab);
-    setActiveTab(newTab);
-  };
-
   switch (activeTab) {
     case "01":
       return (
-        <UploadWork
+        <CombinedEvaluation
           activeSubject={activeSubject}
-          setActiveTab={handleTabChange}
-          setUploadedImages={setUploadedImages}
-        />
-      );
-    case "02":
-      return (
-        <AIEvaluation
-          activeSubject={activeSubject}
+          setActiveTab={setActiveTab}
           uploadedImages={uploadedImages}
-          setActiveTab={handleTabChange}
+          setUploadedImages={setUploadedImages}
           hasScanned={hasScanned}
           setHasScanned={setHasScanned}
         />
       );
-    case "03":
+    case "02":
       return (
-        <PersonalizedInsights
+        <AdaptiveLearning
           activeSubject={activeSubject}
-          setActiveTab={handleTabChange}
+          setActiveTab={setActiveTab}
         />
       );
-    case "04":
-      return <AdaptiveLearning activeSubject={activeSubject} />;
+    case "03":
+      return <VirtualAssistant activeSubject={activeSubject} />;
     default:
       return null;
   }

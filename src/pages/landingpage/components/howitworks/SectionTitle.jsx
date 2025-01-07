@@ -7,13 +7,12 @@ export default function SectionTitle() {
         HOW IT WORKS
       </div>
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6">
-        Steps To Achieve Personalized Learning
+        Steps To Personalize Learning
       </h2>
-      <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto">
-        Designed to be intuitive for both teachers and students, with no
-        learning curve required and integrates seamlessly into teacher's
-        day-to-day work.
-      </p>
+      {/* <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto">
+        Designed to be intuitive for both teachers and students, and integrates
+        seamlessly into teacher's day-to-day work.
+      </p> */}
     </div>
   );
 }
