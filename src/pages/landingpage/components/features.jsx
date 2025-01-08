@@ -201,7 +201,7 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="relative px-6 lg:px-20 flex flex-col lg:flex-row-reverse items-start mt-60">
+      {/* <div className="relative px-6 lg:px-20 flex flex-col lg:flex-row-reverse items-start mt-60">
         <div className="lg:w-1/2 lg:pl-10">
           <div className="inline-block mb-8 px-4 py-1 rounded-full bg-[#407BFF]/10 text-[#407BFF]">
             BRINGING EVERYONE ON THE SAME PAGE
@@ -290,7 +290,7 @@ const Features = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
