@@ -44,12 +44,14 @@ const Navbar = ({ mode = "normal" }) => {
         </div>
         <div className="flex items-center gap-4">
           <Link
-            to={showGetStarted ? "/signup" : "/demo"}
+            to={showGetStarted ? "/demo" : "/login"}
             className={`${buttonVariants({
               variant: showGetStarted ? "solid" : "light",
               size: "default",
             })} ${
-              !showGetStarted && "bg-white hover:bg-gray-100 text-gray-900"
+              showGetStarted
+                ? "bg-blue-500 hover:bg-blue-600 text-white"
+                : "bg-white hover:bg-gray-100 text-gray-900"
             }`}
           >
             <div className="text-base font-semibold">
@@ -57,7 +59,7 @@ const Navbar = ({ mode = "normal" }) => {
                 ? "GO BACK"
                 : showGetStarted
                 ? "SCHEDULE DEMO"
-                : "TRY OUR AI EVALUATOR"}
+                : "LOGIN"}
             </div>
           </Link>
         </div>

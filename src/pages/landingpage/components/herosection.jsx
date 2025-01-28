@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import heroimg from "../../../assets/heroimg.png";
 import { Link } from "react-router-dom";
 import { buttonVariants } from "../../../ui/button";
 
@@ -194,7 +193,7 @@ export default function HeroSection() {
                 px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3.5 text-sm sm:text-base lg:text-lg font-semibold`}
             >
               <div className="text-gray-900 flex items-center justify-center gap-2">
-                WATCH VIDEO
+                WATCH DEMO
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"

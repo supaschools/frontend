@@ -77,7 +77,7 @@ const LoginPage = () => {
         &times;
       </button>
       <div className="bg-white px-8 rounded w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-8 text-center">Log in</h2>
+        <h2 className="text-2xl font-bold mb-8 text-center">Welcome Back!</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <Input
@@ -88,7 +88,7 @@ const LoginPage = () => {
                 setEmail(e.target.value);
                 setValidationErrors((prev) => ({ ...prev, email: "" }));
               }}
-              placeholder="Email"
+              placeholder="Email or Username"
               required
             />
             {validationErrors.email && (
@@ -128,33 +128,8 @@ const LoginPage = () => {
             Login
           </Button>
           <div className="mt-4 text-center text-gray-500 text-sm">
-            <p>
-              By signing in to FutureSchools, you agree to our{" "}
-              <a href="#" className="underline">
-                Terms
-              </a>{" "}
-              and{" "}
-              <a href="#" className="underline">
-                Privacy Policy
-              </a>
-              .
-            </p>
+            {/* Removed Privacy Policy and Terms text */}
           </div>
-          <div className="flex items-center my-4">
-            <div className="flex-grow border-t"></div>
-            <span className="mx-2 text-gray-500">Don't have an account?</span>
-            <div className="flex-grow border-t"></div>
-          </div>
-
-          <Link
-            to="/signup"
-            className={buttonVariants({
-              variant: "light",
-              size: "full",
-            })}
-          >
-            <div className="text-sm font-semibold">CREATE NEW ACCOUNT</div>
-          </Link>
         </form>
       </div>
     </div>
