@@ -47,7 +47,7 @@ const Navbar = ({ mode = "normal" }) => {
             to={showGetStarted ? "/demo" : "/login"}
             className={`${buttonVariants({
               variant: showGetStarted ? "solid" : "light",
-              size: "default",
+              size: "lg",
             })} ${
               showGetStarted
                 ? "bg-blue-500 hover:bg-blue-600 text-white"

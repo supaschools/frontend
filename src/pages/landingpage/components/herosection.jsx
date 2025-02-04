@@ -182,7 +182,7 @@ export default function HeroSection() {
               id="hero-get-started"
               className={`${buttonVariants({ variant: "solid", size: "fsix" })}
                 w-full sm:w-auto bg-[#407BFF] hover:bg-blue-600 transition-colors duration-300 
-                px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3.5 text-sm sm:text-base lg:text-lg font-semibold`}
+                px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3.5 text-sm sm:text-base lg:text-lg font-semibold text-white`}
             >
               SCHEDULE DEMO
             </Link>

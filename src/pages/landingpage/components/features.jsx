@@ -87,10 +87,14 @@ const Features = () => {
               Homework solutions, quiz answers, and exam responses contain
               valuable insights into students' understanding and learning gaps
             </p>
-            <Button className="inline-flex items-center">
+            <Button
+              variant="default"
+              size="lg"
+              className="bg-[#407BFF] hover:bg-[#407BFF]/90 text-white"
+            >
               See How
               <svg
-                className="w-4 h-4 ml-2"
+                className="w-4 h-4"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,10 +184,14 @@ const Features = () => {
               Let AI handle routine tasks like grading and lesson planning,
               giving you more time to focus on meaningful student interactions
             </p>
-            <Button className="inline-flex items-center">
+            <Button
+              variant="default"
+              size="lg"
+              className="bg-[#407BFF] hover:bg-[#407BFF]/90 text-white"
+            >
               See How
               <svg
-                className="w-4 h-4 ml-2"
+                className="w-4 h-4"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
